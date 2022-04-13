@@ -42,22 +42,6 @@ export default {
     });
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 </script>
