@@ -1,24 +1,20 @@
 <template>
- 
     <div class="album py-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" v-for="list in lists" :key="list.id">
+        <div class="col" v-for="list in showBasedOnDrama" :key="list.id">
           <router-link :to="'/shows/' + list.id" class="list-link">
           <div class="card shadow-sm">
-            <img :src="list.image.medium" alt="image" height="475">
+            <img v-if="list.image" :src="list.image.medium" alt="image" height="475">
 
             <div class="card-body">
               <p class="card-text">{{list.name}}</p>
-              <span><p>Rating : {{list.rating.average}}</p></span>
-              
-              
+              <span  v-if="list.rating"><p>Rating : {{list.rating.average}}</p></span>
               <div class="d-flex justify-content-between align-items-center">
-               <small class="text-muted" v-html="list.genres"></small>
+               
+                <small class="text-muted" v-html="list.genres"></small>
                 <small class="text-muted">{{list.premiered}}</small>
-                
-                
               </div>
             </div>
           </div>
@@ -34,7 +30,7 @@
 
 import axios from 'axios'
     export default {
-        name: 'Home',
+        name: 'Drama',
 
         data(){
             return{
@@ -49,8 +45,15 @@ import axios from 'axios'
 
         },
 
+        computed: {
+             showBasedOnDrama(){
+                 return this.lists.filter(show=>show.genres[0]=="Drama")
+             }
+                
+            
+        },
+
         methods: {
-          
             getList(){
                  axios.get('https://api.tvmaze.com/shows')
                 .then((response)=>{
@@ -66,11 +69,11 @@ import axios from 'axios'
         },
 
 
-
     }
 
 
 </script>
+
 
 <style lang="scss">
 span{
@@ -79,6 +82,4 @@ span{
     line-height: 1.4;
   }
 
-
 </style>
-

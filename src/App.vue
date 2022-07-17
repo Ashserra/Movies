@@ -2,7 +2,9 @@
 <div>
   <NavBar/>
   
+<div class="custom-height">
 <router-view></router-view>
+</div>
   <Footer/>
  
   
@@ -47,6 +49,9 @@ body{
 
 a{
   text-decoration: none;
+}
+.custom-height{
+  min-height: calc(100vh - 151px);
 }
 
 header{

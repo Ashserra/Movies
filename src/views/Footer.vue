@@ -4,7 +4,7 @@
             <hr/>
             <div class="row">
                 <div class="col-sm">
-                    <p class="text-center bg-dark text-light"> &copy; 2022 VueMovies | All rights reserved | Terms of service | Privacy</p>
+                    <p class="text-center bg-dark text-light"> &copy; 2022 ShowTime | All rights reserved | Terms of service | Privacy</p>
                 </div>
 
             </div>
